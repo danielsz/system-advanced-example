@@ -1,7 +1,13 @@
 (ns example.core
-  (:require [reloaded.repl :refer [system]]))
+  (:require [reloaded.repl :refer [set-init! go]]
+            [example.systems :refer [prod-system]]
+            [example.db :refer [create-table!]]))
 
-
-
-
+(defn -main
+  "Start a production system, unless a system is passed as argument (as in the dev-run task)."
+  [& args]
+  (let [system (or (first args) #'prod-system)]
+    (set-init! system)
+    (go)
+    (create-table! (:db-spec (:db reloaded.repl/system)))))
 

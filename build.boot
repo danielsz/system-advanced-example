@@ -32,5 +32,21 @@
    (environ :env {:http-port "3025"})
    (watch :verbose true)
    (system :sys #'dev-system :auto-start true :hot-reload true :files ["handler.clj"])
-   ;(reload)
    (repl :server true)))
+
+
+(deftask dev-run
+  "Run a restartable system in the Repl"
+  []
+  (comp
+   (environ :env {:http-port "3025"})
+   (run :main-namespace "example.core" :arguments [#'dev-system])
+   (wait)))
+
+(deftask prod-run
+  "Run a restartable system in the Repl"
+  []
+  (comp
+   (environ :env {:http-port "8008"})
+   (run :main-namespace "example.core" :arguments [#'prod-system])
+   (wait)))
