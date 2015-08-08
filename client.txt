@@ -1,0 +1,29 @@
+# GET /
+GET http://localhost:3025
+
+# GET directors
+GET http://localhost:3025/directors
+
+# POST movies
+POST http://localhost:3025/movie
+Content-Type: application/json
+
+{"movie":"Realm of senses"}
+
+# POST movies
+POST http://localhost:3025/movie
+Content-Type: application/edn
+
+{:movie "Realm of senses"}
+
+# PUT director
+PUT http://localhost:3025/director
+Content-Type: application/edn
+
+{:director "Antonioni"}
+
+# DELETE director
+DELETE http://localhost:3025/director
+Content-Type: application/edn
+
+{:director "Antonioni"}

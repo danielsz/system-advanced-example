@@ -10,6 +10,7 @@
                  [org.clojure/clojure "1.7.0"]
                  [org.danielsz/system "0.1.8"]
                  [ring/ring-defaults "0.1.5"]
+                 [ring-middleware-format "0.5.0"]
                  [http-kit "2.1.19"]
                  [compojure "1.4.0"]
                  [org.danielsz/system "0.1.8"]
@@ -22,7 +23,7 @@
  '[adzerk.boot-reload    :refer [reload]]
  '[reloaded.repl :refer [init start stop go reset]]
  '[example.systems :refer [dev-system prod-system]]
- '[environ.boot :refer [environ]] ;[danielsz.boot-environ :refer [environ]]
+ '[environ.boot :refer [environ]] 
  '[system.boot :refer [system run]])
 
 (deftask dev
