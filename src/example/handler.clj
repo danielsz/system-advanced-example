@@ -11,7 +11,7 @@
 
 
 (defroutes routes
-  (GET "/" [] "Welcome")
+  (GET "/" [] "Welcome. Feed a movie title, and get the director back. Info https://github.com/danielsz/system-advanced-example")
   (POST "/movie" req (fn [{params :params :as req}]
                        (-> (pr-str {:director (get-director-of-movie (:movie params))})
                            response
