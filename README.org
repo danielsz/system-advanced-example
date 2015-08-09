@@ -74,7 +74,7 @@ curl -H "Content-Type: application/edn" -X PUT -d '{:director "Jean-Luc Godard"}
 #+END_SRC
 
 We should now have three directors in our database:
-#+BEGIN_SRC sh :results output replace
+#+BEGIN_SRC sh :results output replace :exports both
 curl http://localhost:3025/directors
 #+END_SRC
 
