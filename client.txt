@@ -6,12 +6,6 @@ GET http://localhost:3025/directors
 
 # POST movies
 POST http://localhost:3025/movie
-Content-Type: application/json
-
-{"movie":"Realm of senses"}
-
-# POST movies
-POST http://localhost:3025/movie
 Content-Type: application/edn
 
 {:movie "Realm of senses"}
