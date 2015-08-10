@@ -30,7 +30,8 @@
   "Run a restartable system in the Repl"
   []
   (comp
-   (environ :env {:http-port "3025"})
+   (environ :env {:http-port "3025"
+                  :imdb-key "348b843dca6130f34597bea34cb95701"})
    (watch :verbose true)
    (system :sys #'dev-system :auto-start true :hot-reload true :files ["handler.clj"])
    (repl :server true)))
@@ -40,7 +41,8 @@
   "Run a restartable system in the Repl"
   []
   (comp
-   (environ :env {:http-port "3025"})
+   (environ :env {:http-port "3025"
+                  :imdb-key "348b843dca6130f34597bea34cb95701"})
    (run :main-namespace "example.core" :arguments [#'dev-system])
    (wait)))
 
@@ -48,6 +50,7 @@
   "Run a restartable system in the Repl"
   []
   (comp
-   (environ :env {:http-port "8008"})
+   (environ :env {:http-port "8008"
+                  :imdb-key "348b843dca6130f34597bea34cb95701"})
    (run :main-namespace "example.core" :arguments [#'prod-system])
    (wait)))

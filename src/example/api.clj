@@ -1,12 +1,11 @@
 (ns example.api
   (:require [clj-http.client :as client]
-            [clojure.data.json :as json]))
-
-(def api-key "348b843dca6130f34597bea34cb95701")
+            [clojure.data.json :as json]
+            [environ.core :refer [env]]))
 
 (defn search-movie [title]
   (-> 
-   (client/get "http://api.themoviedb.org/3/search/movie" {:query-params {"api_key" api-key "query" title}})
+   (client/get "http://api.themoviedb.org/3/search/movie" {:query-params {"api_key" (:imdb-key env)  "query" title}})
    :body
    json/read-str
    clojure.walk/keywordize-keys))
@@ -17,7 +16,7 @@
       (:id (first (:results hits))))))
 
 (defn get-movie-director [id]
-  (->> (client/get (str "http://api.themoviedb.org/3/movie/" id "/casts") {:query-params {"api_key" api-key}})
+  (->> (client/get (str "http://api.themoviedb.org/3/movie/" id "/casts") {:query-params {"api_key" (:imdb-key env)}})
       :body
       json/read-str
       clojure.walk/keywordize-keys

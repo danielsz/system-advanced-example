@@ -14,10 +14,10 @@ Content-Type: application/edn
 PUT http://localhost:3025/director
 Content-Type: application/edn
 
-{:director "Antonioni"}
+{:director "Nagisa Ōshima"}
 
 # DELETE director
 DELETE http://localhost:3025/director
 Content-Type: application/edn
 
-{:director "Antonioni"}
+{:director "Nagisa Ōshima"}
