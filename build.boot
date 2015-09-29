@@ -6,7 +6,6 @@
                  [com.h2database/h2 "1.4.187"]
                  [environ"1.0.0"]
                  [boot-environ "1.0.0-RC1"]
-                 ;[danielsz/boot-environ "0.0.4"]
                  [org.clojure/clojure "1.7.0"]
                  [org.danielsz/system "0.2.0-SNAPSHOT"]
                  [ring/ring-defaults "0.1.5"]
