@@ -18,17 +18,17 @@
                            (content-type "application/edn")
                            (charset "UTF-8"))))
   (GET "/directors" [] (fn [_]
-                         (let [db (:db-spec (:db reloaded.repl/system))]
-                           (-> (pr-str (map :name (directors db)))
+                         (let [db-spec (:db-spec (:db reloaded.repl/system))]
+                           (-> (pr-str (map :name (directors {} {:connection db-spec})))
                                response
                                (content-type "application/edn")
                                (charset "UTF-8")))))
   (ANY "/director" req (fn [{params :params :as req}]
-                         (let [db (:db-spec (:db system))]                       
+                         (let [db-spec (:db-spec (:db system))]                       
                            (->
                             (case (:request-method req)
-                              :put (save-director<! db (:director params))
-                              :delete (delete-director! db (:director params)))
+                              :put (save-director<! {:name (:director params)} {:connection db-spec})
+                              :delete (delete-director! {:name (:director params)} {:connection db-spec}))
                             response))))
   (route/not-found "404"))
 
