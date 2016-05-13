@@ -1,5 +1,5 @@
 (ns example.core
-  (:require [reloaded.repl :refer [set-init! go]]
+  (:require [system.repl :refer [set-init! go]]
             [example.systems :refer [prod-system]]
             [example.db :refer [create-table!]]))
 
@@ -8,6 +8,5 @@
   [& args]
   (let [system (or (first args) #'prod-system)]
     (set-init! system)
-    (go)
-    (create-table! (:db-spec (:db reloaded.repl/system)))))
+    (go)))
 

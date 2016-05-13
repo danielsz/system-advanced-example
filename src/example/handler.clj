@@ -7,7 +7,7 @@
    [ring.middleware.defaults :refer [wrap-defaults api-defaults]]
    [example.db :refer [save-director<! delete-director! directors]]
    [example.api :refer [get-director-of-movie]]
-   [reloaded.repl :refer [system]]))
+   [system.repl :refer [system]]))
 
 
 (defroutes routes
@@ -18,7 +18,7 @@
                            (content-type "application/edn")
                            (charset "UTF-8"))))
   (GET "/directors" [] (fn [_]
-                         (let [db-spec (:db-spec (:db reloaded.repl/system))]
+                         (let [db-spec (:db-spec (:db system))]
                            (-> (pr-str (map :name (directors {} {:connection db-spec})))
                                response
                                (content-type "application/edn")

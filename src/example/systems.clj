@@ -13,5 +13,5 @@
    :web (new-web-server (Integer. (env :http-port)) app)])
 
 (defsystem prod-system
-  [:db (new-h2-database DEFAULT-DB-SPEC)
+  [:db (new-h2-database DEFAULT-DB-SPEC #(create-table! {} {:connection %}))
    :web (new-web-server (Integer. (env :http-port)) app)])
