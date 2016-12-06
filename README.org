@@ -1,17 +1,23 @@
 * Web service example for system
 ** Definition
-Names are important. Which names? Those behind our favorite movies, that's who! So let us save them via a web service.
+Names are important. What names? Those behind our favorite movies, that's who! So let us save them via a web service.
 
 ** Installation
 
-In our development environment, we use a in-memory database and a web server listening on port 3025. In our production environment, we use a persistent database and a web server listening on port 8008.
+In our development environment, we use a in-memory database and a web server listening on port 3025. 
 
-Start the system with development settings: 
+#+BEGIN_SRC sh
+$ boot dev
+#+END_SRC
+
+Or, if you don't intend to connect with a REPL to the running system, type simply:
+
 #+BEGIN_SRC sh
 $ boot dev-run
 #+END_SRC
 
-Or with production settings:
+In our production environment, we use a persistent database and a web server listening on port 8008.
+
 #+BEGIN_SRC sh
 $ boot prod-run
 #+END_SRC
