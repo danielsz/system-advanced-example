@@ -8,10 +8,12 @@
    [example.db :refer [create-table!]]
    [environ.core :refer [env]]))
 
-(defsystem dev-system
-  [:db (new-h2-database DEFAULT-MEM-SPEC #(create-table! {} {:connection %}))
+(defn select-database [env]
+  (let [dbs {"default-mem-spec" DEFAULT-MEM-SPEC
+             "default-db-spec" DEFAULT-DB-SPEC}]
+    (get dbs (env :db) DEFAULT-MEM-SPEC)))
+
+(defsystem base-system
+  [:db (new-h2-database (select-database env) #(create-table! {} {:connection %}))
    :web (new-web-server (Integer. (env :http-port)) app)])
 
-(defsystem prod-system
-  [:db (new-h2-database DEFAULT-DB-SPEC #(create-table! {} {:connection %}))
-   :web (new-web-server (Integer. (env :http-port)) app)])
